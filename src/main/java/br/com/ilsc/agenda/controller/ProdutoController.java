@@ -25,7 +25,7 @@ public class ProdutoController {
 
 	@GetMapping("cadProduto")
 	public ModelAndView inicio() {
-		ModelAndView mv = new ModelAndView("cadastro/cadastroProduto");
+		ModelAndView mv = new ModelAndView("cadastro/formProduto");
 		mv.addObject("produtoObj", new Produto());
 		mv.addObject("produtos", produtoRepository.findAll());
 		mv.addObject("categorias", categoriaRepository.findAll());
@@ -37,7 +37,7 @@ public class ProdutoController {
 
 		produtoRepository.save(produto);
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroProduto");
+		ModelAndView mv = new ModelAndView("cadastro/formProduto");
 		mv.addObject("produtos", produtoRepository.findAll());
 		mv.addObject("produtoObj", new Produto());
 		mv.addObject("categorias", categoriaRepository.findAll());
@@ -50,7 +50,7 @@ public class ProdutoController {
 
 		Optional<Produto> produto = produtoRepository.findById(idProduto);
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroProduto");
+		ModelAndView mv = new ModelAndView("cadastro/formProduto");
 		mv.addObject("produtoObj", produto.get());
 		mv.addObject("categorias", categoriaRepository.findAll());
 
@@ -61,7 +61,7 @@ public class ProdutoController {
 	public ModelAndView excluir(@PathVariable("prodId") Long idProduto) {
 
 		produtoRepository.deleteById(idProduto);
-		ModelAndView mv = new ModelAndView("cadastro/cadastroProduto");
+		ModelAndView mv = new ModelAndView("cadastro/formProduto");
 		mv.addObject("produtoObj", new Produto());
 		mv.addObject("produtos", produtoRepository.findAll());
 
@@ -70,7 +70,7 @@ public class ProdutoController {
 
 	@GetMapping("/listaProdutos")
 	public ModelAndView listar() {
-		ModelAndView mv = new ModelAndView("cadastro/cadastroProduto");
+		ModelAndView mv = new ModelAndView("cadastro/formProduto");
 		mv.addObject("produtos", produtoRepository.findAll());
 		mv.addObject("produtoObj", new Produto());
 
@@ -80,7 +80,7 @@ public class ProdutoController {
 	@PostMapping("**/pesquisarNome")
 	public ModelAndView pesquisar(@RequestParam("nomePesquisa") String nome) {
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroProduto");
+		ModelAndView mv = new ModelAndView("cadastro/formProduto");
 		mv.addObject("produtoObj", new Produto());
 		mv.addObject("produtos", produtoRepository.findByNomeContaining(nome));
 		return mv;

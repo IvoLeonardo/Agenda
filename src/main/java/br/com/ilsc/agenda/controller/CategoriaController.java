@@ -22,7 +22,7 @@ public class CategoriaController {
 	@GetMapping("/cadCategoria")
 	public ModelAndView inicio() {
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroCategoria");
+		ModelAndView mv = new ModelAndView("cadastro/formCategoria");
 		mv.addObject("categoriaObj", new Categoria());
 		mv.addObject("categorias", categoriaRepository.findAll());
 		return mv;
@@ -41,7 +41,7 @@ public class CategoriaController {
 
 		categoriaRepository.save(categoria);
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroCategoria");
+		ModelAndView mv = new ModelAndView("cadastro/formCategoria");
 		mv.addObject("categorias", categoriaRepository.findAll());
 		mv.addObject("categoriaObj", new Categoria());
 

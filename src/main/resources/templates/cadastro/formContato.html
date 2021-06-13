@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Index</title>
+	</head>
+	
+	<body>
+	
+		<h5><a href="/index">Página inicial</a></h5>
+		<h5><a href="/cadProduto">Cadastrar produto</a></h5>
+		<h5><a href="/cadCategoria">Cadastrar categoria</a></h5>
+		
+		<form action="salvarContato" method="post" th:object="${contatoObj}">
+		
+			<input type="hidden" name="id" th:field="*{id}">
+		
+			<label>Nome</label>
+			<input type="text" name="contato" th:field="*{contato}">
+			<input type="submit" value="salvar">
+		</form>
+		
+		<table>
+			<tr>
+				<th>Código</th><th>Nome do contato</th>
+			</tr>
+			<tr th:each="c : ${contatos}">
+				<td th:text="${c.id}"></td>
+				<td th:text="${c.contato}"></td>
+			</tr>
+		</table>
+	</body>
+</html>
