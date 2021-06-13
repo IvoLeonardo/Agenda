@@ -13,7 +13,15 @@ public class Contato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String contato;
+	private String nomeContato;
+
+	public Contato() {
+
+	}
+
+	public Contato(String contato) {
+		this.nomeContato = contato;
+	}
 
 	public Long getId() {
 		return id;
@@ -23,12 +31,16 @@ public class Contato {
 		this.id = id;
 	}
 
-	public String getContato() {
-		return contato;
+	public String getNomeContato() {
+		return nomeContato;
 	}
 
-	public void setContato(String contato) {
-		this.contato = contato;
+	public void setNomeContato(String contato) {
+		this.nomeContato = contato;
 	}
 
+	@Override
+	public String toString() {
+		return this.getNomeContato();
+	}
 }

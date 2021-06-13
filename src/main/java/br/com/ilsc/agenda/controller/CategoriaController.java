@@ -53,7 +53,7 @@ public class CategoriaController {
 
 		Optional<Categoria> categoria = categoriaRepository.findById(idCategoria);
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroCategoria");
+		ModelAndView mv = new ModelAndView("cadastro/formCategoria");
 		mv.addObject("categoriaObj", categoria.get());
 		return mv;
 	}
@@ -63,7 +63,7 @@ public class CategoriaController {
 
 		categoriaRepository.deleteById(idCategoria);
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroCategoria");
+		ModelAndView mv = new ModelAndView("cadastro/formCategoria");
 		mv.addObject("categorias", categoriaRepository.findAll());
 		mv.addObject("categoriaObj", new Categoria());
 		return mv;
@@ -72,7 +72,7 @@ public class CategoriaController {
 	@PostMapping("**/pesquisaNomeCategoria")
 	public ModelAndView pesquisar(@RequestParam("nomePesquisa") String nome) {
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroCategoria");
+		ModelAndView mv = new ModelAndView("cadastro/formCategoria");
 		mv.addObject("categoriaObj", new Categoria());
 		mv.addObject("categorias", categoriaRepository.findByNomeContaining(nome));
 
@@ -82,7 +82,7 @@ public class CategoriaController {
 	@GetMapping("/listaCategorias")
 	public ModelAndView listar() {
 
-		ModelAndView mv = new ModelAndView("cadastro/cadastroCategoria");
+		ModelAndView mv = new ModelAndView("cadastro/formCategoria");
 		mv.addObject("categoriaObj", new Categoria());
 		mv.addObject("categorias", categoriaRepository.findAll());
 
