@@ -13,6 +13,9 @@ public class Contato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	// Corrigido. O nome do atributo da classe não pode ser o mesmo nome da classe,
+	// caso contrário ocorre o erro de status 400
 	private String nomeContato;
 
 	public Contato() {
